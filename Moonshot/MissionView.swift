@@ -33,7 +33,7 @@ struct MissionView: View {
                         width * 0.6
                     }
 
-                Text(mission.formattedLaunchDate)
+                Text(mission.formattedLaunchDate(false))
                     .font(.headline.bold())
                     .padding(.top)
                 

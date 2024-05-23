@@ -15,7 +15,7 @@ struct ContentView: View {
         GridItem(.adaptive(minimum: 150))
     ]
 
-    @State private var showingGrid = false
+    @State private var showingGrid = true
     
     var body: some View {
         NavigationStack {
@@ -33,12 +33,16 @@ struct ContentView: View {
             .toolbar {
                 HStack {
                     Button ("Grid", systemImage: "square.grid.2x2"){
-                        showingGrid.toggle()
+                        withAnimation{
+                            showingGrid.toggle()
+                        }
                     }
                     .disabled(showingGrid)
                     
                     Button ("List", systemImage: "list.bullet"){
-                        showingGrid.toggle()
+                        withAnimation{
+                            showingGrid.toggle()
+                        }
                     }
                     .disabled(!showingGrid)
                 }

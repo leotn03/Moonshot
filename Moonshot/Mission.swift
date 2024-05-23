@@ -10,7 +10,7 @@ import Foundation
 struct Mission: Hashable, Codable, Identifiable, Equatable {
     static func == (lhs: Mission, rhs: Mission) -> Bool {
         return lhs.id == rhs.id
-        && lhs.formattedLaunchDate == rhs.formattedLaunchDate
+        && lhs.formattedLaunchDate() == rhs.formattedLaunchDate()
         && lhs.crew == rhs.crew
         && lhs.description == rhs.description
     }
@@ -33,7 +33,7 @@ struct Mission: Hashable, Codable, Identifiable, Equatable {
         "apollo\(id)"
     }
 
-    var formattedLaunchDate: String {
-        launchDate?.formatted(date: .abbreviated, time: .omitted) ?? "N/A"
+    func formattedLaunchDate (_ isAbbreviated: Bool = true) -> String {
+        launchDate?.formatted(date: isAbbreviated ? .abbreviated : .long, time: .omitted) ?? "N/A"
     }
 }
